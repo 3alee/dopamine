@@ -27,11 +27,13 @@ export class WindowControlsComponent implements OnInit {
     public maxRestoreClick(): void {
         const window: BrowserWindow = this.application.getCurrentWindow();
 
-        if (window.isMaximized()) {
-            window.unmaximize();
+        if (window.isFullScreen() /*window.isMaximized()*/) {
+            // window.unmaximize();
+            window.setFullScreen(false);
             this.canMaximize = true;
         } else {
-            window.maximize();
+            //window.maximize();
+            window.setFullScreen(true);
             this.canMaximize = false;
         }
     }
